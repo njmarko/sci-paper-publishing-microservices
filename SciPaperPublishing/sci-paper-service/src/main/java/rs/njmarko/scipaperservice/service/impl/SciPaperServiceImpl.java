@@ -57,6 +57,10 @@ public class SciPaperServiceImpl implements SciPaperService {
             throw new IllegalArgumentException("Service is not available. Try again later!");
         }
 
+        if (!publishPaperRequest.getUsername().equals(sciPaper.getAuthor())){
+            throw new IllegalArgumentException("You can't publish this paper because you did not create it!");
+        }
+
         PublishMessage publishMessage = new PublishMessage();
         publishMessage.setId(publishPaperRequest.getId());
         publishMessage.setAuthor(name);
