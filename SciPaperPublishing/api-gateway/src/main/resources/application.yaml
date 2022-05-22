@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: UserService
+          uri: lb://UserService
+          predicates:
+            - Path=/api/user-service/**
+          filters:
+            - RewritePath=/api/user-service/(?<segment>.*), /$\{segment}
+        - id: SciPaperService
+          uri: lb://SciPaperService
+          predicates:
+            - Path=/api/scipaper-service/**
+          filters:
+            - RewritePath=/api/scipaper-service/(?<segment>.*), /$\{segment}
+        - id: LibraryService
+          uri: lb://LibraryService
+          predicates:
+            - Path=/api/library-service/**
+          filters:
+            - RewritePath=/api/library-service/(?<segment>.*), /$\{segment}

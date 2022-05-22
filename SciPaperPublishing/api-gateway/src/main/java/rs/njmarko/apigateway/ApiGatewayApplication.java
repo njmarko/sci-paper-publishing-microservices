@@ -16,23 +16,4 @@ public class ApiGatewayApplication {
 		SpringApplication.run(ApiGatewayApplication.class, args);
 	}
 
-	@Bean
-	public RouteLocator gatewayRoutes(RouteLocatorBuilder routeLocatorBuilder)
-	{
-		return routeLocatorBuilder.routes()
-				.route("UserService", rt -> rt.path("/api/user/**")
-						.filters(f -> f.rewritePath("/api/user/(?<segment>.*)", "/${segment}"))
-						.uri("lb://UserService"))
-
-				.route("SciPaperService", rt -> rt.path("/api/scipaper/**")
-						.filters(f -> f.rewritePath("/api/scipaper/(?<segment>.*)", "/${segment}"))
-						.uri("lb://SciPaperService"))
-
-				.route("LibraryService", rt -> rt.path("/api/library/**")
-						.filters(f -> f.rewritePath("/api/library/(?<segment>.*)", "/${segment}"))
-						.uri("lb://LibraryService"))
-
-				.build();
-	}
-
 }
