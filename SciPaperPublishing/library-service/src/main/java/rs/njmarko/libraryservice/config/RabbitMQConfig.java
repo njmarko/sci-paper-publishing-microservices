@@ -1,4 +1,4 @@
-package rs.njmarko.scipaperservice.config;
+package rs.njmarko.libraryservice.config;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
@@ -23,7 +23,7 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public MessageConverter messageConverter() {
+    public MessageConverter messageConverter(){
         return new Jackson2JsonMessageConverter();
     }
 
@@ -34,6 +34,7 @@ public class RabbitMQConfig {
 
     @Bean
     public RabbitTemplate rabbitTemplate() {
+
         var template = new RabbitTemplate(connectionFactory());
         template.setMessageConverter(messageConverter());
         return template;

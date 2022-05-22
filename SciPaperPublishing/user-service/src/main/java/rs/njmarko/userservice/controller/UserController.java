@@ -7,6 +7,8 @@ import rs.njmarko.userservice.model.LoginRequest;
 import rs.njmarko.userservice.model.User;
 import rs.njmarko.userservice.service.UserService;
 
+import javax.validation.Valid;
+
 @RestController
 public class UserController {
 
@@ -19,12 +21,12 @@ public class UserController {
 
 
     @PostMapping("register")
-    public String register(@RequestBody User user) throws IllegalAccessException {
+    public String register(@Valid @RequestBody User user) throws IllegalAccessException {
         return userService.register(user);
     }
 
     @PostMapping("login")
-    public String login(@RequestBody LoginRequest loginRequest) {
+    public String login(@Valid @RequestBody LoginRequest loginRequest) {
         return userService.login(loginRequest);
     }
 

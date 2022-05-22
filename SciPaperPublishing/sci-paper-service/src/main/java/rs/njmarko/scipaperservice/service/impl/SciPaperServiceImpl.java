@@ -57,7 +57,7 @@ public class SciPaperServiceImpl implements SciPaperService {
             throw new IllegalArgumentException("Service is not available. Try again later!");
         }
 
-        if (!publishPaperRequest.getUsername().equals(sciPaper.getAuthor())){
+        if (!publishPaperRequest.getUsername().equals(sciPaper.getAuthor())) {
             throw new IllegalArgumentException("You can't publish this paper because you did not create it!");
         }
 
@@ -66,7 +66,7 @@ public class SciPaperServiceImpl implements SciPaperService {
         publishMessage.setAuthor(name);
         publishMessage.setTitle(sciPaper.getTitle());
 
-        rabbitTemplate.convertAndSend("", publishMessage);
+        rabbitTemplate.convertAndSend("PUBLISH_PAPER", publishMessage);
 
         return "Paper published!";
     }

@@ -1,6 +1,7 @@
-package rs.njmarko.scipaperservice.messages;
+package rs.njmarko.libraryservice.messages;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

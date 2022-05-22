@@ -8,6 +8,8 @@ import rs.njmarko.scipaperservice.model.PublishPaperRequest;
 import rs.njmarko.scipaperservice.model.SciPaper;
 import rs.njmarko.scipaperservice.service.SciPaperService;
 
+import javax.validation.Valid;
+
 @RestController
 public class SciPaperController {
 
@@ -19,7 +21,7 @@ public class SciPaperController {
     }
 
     @PostMapping("create")
-    public SciPaper createPaper(@RequestBody SciPaper sciPaper){
+    public SciPaper createPaper(@Valid @RequestBody SciPaper sciPaper){
         return sciPaperService.createSciPaper(sciPaper);
     }
 

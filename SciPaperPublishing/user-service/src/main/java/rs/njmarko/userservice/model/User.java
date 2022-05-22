@@ -18,13 +18,10 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "users")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotBlank(message = "Field 'id' cannot be empty!")
-    private Integer id;
 
     @Column(name = "username", nullable = false)
     @NotBlank(message = "Field 'username' cannot be empty!")
+    @Id
     private String username;
 
     @Column(name = "password", nullable = false)
