@@ -8,7 +8,6 @@ import rs.njmarko.userservice.model.User;
 import rs.njmarko.userservice.service.UserService;
 
 @RestController
-@RequestMapping(value = "/user-service/")
 public class UserController {
 
     private final UserService userService;
@@ -19,22 +18,22 @@ public class UserController {
     }
 
 
-    @PostMapping("/register")
+    @PostMapping("register")
     public String register(@RequestBody User user) throws IllegalAccessException {
         return userService.register(user);
     }
 
-    @PostMapping("/login")
+    @PostMapping("login")
     public String login(@RequestBody LoginRequest loginRequest) {
         return userService.login(loginRequest);
     }
 
-    @GetMapping("/is-logged-in/{username}")
+    @GetMapping("is-logged-in/{username}")
     public Boolean isLoggedIn(@PathVariable String username) {
         return userService.isLoggedIn(username);
     }
 
-    @GetMapping("/get-full-name/{username}")
+    @GetMapping("get-full-name/{username}")
     public String getFullName(@PathVariable String username) {
         return userService.getFullName(username);
     }
